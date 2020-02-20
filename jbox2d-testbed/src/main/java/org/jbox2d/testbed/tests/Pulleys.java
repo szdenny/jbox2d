@@ -110,7 +110,7 @@ public class Pulleys extends TestbedTest {
 
       bd.position.set(10.0f, y);
       Body body2 = getWorld().createBody(bd);
-      body2.createFixture(shape, 5.0f);
+      body2.createFixture(shape, 15.0f);
 
       PulleyJointDef pulleyDef = new PulleyJointDef();
       Vec2 anchor1 = new Vec2(-10.0f, y + b);

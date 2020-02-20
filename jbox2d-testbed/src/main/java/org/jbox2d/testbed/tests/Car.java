@@ -171,10 +171,10 @@ public class Car extends TestbedTest {
       ground.createFixture(fd);
 
       x += 20.0f;
-      shape.set(new Vec2(x, 0.0f), new Vec2(x + 40.0f, 0.0f));
+      shape.set(new Vec2(x, 0.0f), new Vec2(x + 140.0f, 0.0f));
       ground.createFixture(fd);
 
-      x += 40.0f;
+      x += 140.0f;
       shape.set(new Vec2(x, 0.0f), new Vec2(x, 20.0f));
       ground.createFixture(fd);
     }
