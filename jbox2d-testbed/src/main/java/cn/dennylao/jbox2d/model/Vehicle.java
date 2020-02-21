@@ -1,9 +1,6 @@
 package cn.dennylao.jbox2d.model;
 
 import org.jbox2d.common.Vec2;
-import org.jbox2d.dynamics.Body;
-import org.jbox2d.dynamics.World;
-import org.jbox2d.dynamics.joints.WheelJoint;
 
 public abstract class Vehicle {
     private float hz = 4.0f;
@@ -20,6 +17,14 @@ public abstract class Vehicle {
         this.frame = builder.frame;
         this.engine = builder.engine;
         this.position = builder.position;
+    }
+
+    public void setEngine(Engine engine) {
+        this.engine = engine;
+    }
+
+    public void setFrame(Carframe frame) {
+        this.frame = frame;
     }
 
     public void forward() {
@@ -78,12 +83,12 @@ public abstract class Vehicle {
             return this;
         }
 
-        public Builder setFrame(Carframe frame){
+        public Builder setFrame(Carframe frame) {
             this.frame = frame;
             return this;
         }
 
-        public Builder setEngine(Engine engine){
+        public Builder setEngine(Engine engine) {
             this.engine = engine;
             return this;
         }

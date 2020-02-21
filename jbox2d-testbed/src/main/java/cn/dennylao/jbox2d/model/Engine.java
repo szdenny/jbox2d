@@ -8,37 +8,50 @@ import org.jbox2d.dynamics.joints.WheelJointDef;
 
 public class Engine {
     private World world;
-    private Body body;
+    private float radius;
+    private float speed;
+    private float frequencyHz;
+    private float dampingRatio;
+    private float torque;
+    private float friction;
+    private float density;
     private WheelJoint wheelJoint;
 
     public Engine(Builder builder) {
         this.world = builder.world;
-        this.body = builder.body;
+        this.radius = builder.radius;
+        this.speed = builder.speed;
+        this.frequencyHz = builder.frequencyHz;
+        this.dampingRatio = builder.dampingRatio;
+        this.torque = builder.torque;
+        this.density = builder.density;
+        this.friction = builder.friction;
+    }
 
-        final Vec2 bodyPosition = this.body.getPosition();
+    public void assemble(Carframe frame) {
         final BodyDef bd = new BodyDef();
         bd.type = BodyType.DYNAMIC;
-        bd.position.set(bodyPosition.x - WIDTH / 2 + builder.radius, 0.5f);
+        bd.position.set(frame.getEngineConnectionPoint());
         final Body wheel = this.world.createBody(bd);
 
         FixtureDef fd = new FixtureDef();
         final CircleShape circle = new CircleShape();
-        circle.m_radius = builder.radius;
+        circle.m_radius = radius;
         fd.shape = circle;
-        fd.density = 1.2f;
-        fd.friction = 0.9f;
+        fd.density = density;
+        fd.friction = friction;
         wheel.createFixture(fd);
 
         final WheelJointDef jd = new WheelJointDef();
         final Vec2 axis = new Vec2(0.0f, 1.0f);
-        jd.initialize(body, wheel, wheel.getPosition(), axis);
+        jd.initialize(frame.getBody(), wheel, wheel.getPosition(), axis);
         jd.motorSpeed = 0.0f;
-        jd.maxMotorTorque = builder.torque;
+        jd.maxMotorTorque = torque;
         jd.enableMotor = true;
-        jd.frequencyHz = builder.frequencyHz;
-        jd.dampingRatio = builder.dampingRatio;
+        jd.frequencyHz = frequencyHz;
+        jd.dampingRatio = dampingRatio;
 
-        this.wheelJoint = (WheelJoint) this.world.createJoint(jd);
+        this.wheelJoint = (WheelJoint) world.createJoint(jd);
     }
 
     public void setMotorSpeed(float speed) {
@@ -51,15 +64,18 @@ public class Engine {
 
     public static class Builder {
         private World world;
-        private Body body;
         private float radius = 0.5f;
-        private float speed= 50.f;
+        private float speed = 50.f;
         private float frequencyHz = 4.0f;
         private float dampingRatio = 0.7f;
         private float torque = 20.0f;
+        private float density = 1.2f;
+        private float friction = 0.9f;
 
-        public Builder(){
+        public Builder(World world) {
+            this.world = world;
         }
+
         public Builder setSpeed(float speed) {
             this.speed = speed;
             return this;
@@ -70,9 +86,7 @@ public class Engine {
             return this;
         }
 
-        public Engine build(World world, Body body) {
-            this.world = world;
-            this.body = body;
+        public Engine build() {
             return new Engine(this);
         }
     }

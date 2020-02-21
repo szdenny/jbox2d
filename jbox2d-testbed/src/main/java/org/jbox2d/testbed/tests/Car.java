@@ -24,7 +24,6 @@
 package org.jbox2d.testbed.tests;
 
 import cn.dennylao.jbox2d.model.Truck;
-import cn.dennylao.jbox2d.model.Vehicle;
 import org.jbox2d.collision.shapes.EdgeShape;
 import org.jbox2d.collision.shapes.PolygonShape;
 import org.jbox2d.common.MathUtils;
@@ -260,7 +259,7 @@ public class Car extends TestbedTest {
 
         // Car
         {
-            truck = (Truck) new Truck.Builder().setPosition(new Vec2(0.3f, 1.3f)).build(m_world);
+            truck = (Truck) new Truck.Builder(m_world).setPosition(new Vec2(0.3f, 1.3f)).build();
         }
     }
 
