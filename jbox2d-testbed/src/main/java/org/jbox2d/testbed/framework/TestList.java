@@ -39,7 +39,7 @@ public class TestList {
 //    model.addTest(new LiquidTimer());
 //    model.addTest(new WaveMachine());
 //    model.addTest(new Particles());
-    model.addTest(new Truck());
+//    model.addTest(new Truck());
     model.addTest(new CompoundShapes());
     model.addTest(new RopeTest());
     model.addTest(new Car());
