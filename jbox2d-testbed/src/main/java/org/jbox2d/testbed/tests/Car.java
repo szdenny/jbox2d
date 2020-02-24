@@ -23,7 +23,7 @@
  ******************************************************************************/
 package org.jbox2d.testbed.tests;
 
-import cn.dennylao.jbox2d.model.Truck;
+import cn.dennylao.jbox2d.model.object.Truck;
 import org.jbox2d.collision.shapes.EdgeShape;
 import org.jbox2d.collision.shapes.PolygonShape;
 import org.jbox2d.common.MathUtils;
@@ -116,7 +116,7 @@ public class Car extends TestbedTest {
         }
         m_hz = 4.0f;
         m_zeta = 0.7f;
-        m_speed = 50.0f;
+        m_speed = 1.0f;
 
         Body ground = null;
         {
@@ -268,17 +268,17 @@ public class Car extends TestbedTest {
         switch (argKeyChar) {
             case 'a':
                 truck.start();
-                truck.backward();
+                truck.backward(m_speed++);
                 break;
 
             case 's':
+                m_speed = 0;
                 truck.stop();
                 break;
 
             case 'd':
                 truck.start();
-                ;
-                truck.forward();
+                truck.forward(m_speed > 50 ? m_speed : m_speed++);
                 break;
 
             case 'q':
@@ -302,6 +302,7 @@ public class Car extends TestbedTest {
             case 'a':
             case 's':
             case 'd':
+                m_speed--;
                 truck.start();
                 break;
         }

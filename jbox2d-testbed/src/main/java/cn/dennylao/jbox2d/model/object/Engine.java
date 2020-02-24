@@ -1,4 +1,4 @@
-package cn.dennylao.jbox2d.model;
+package cn.dennylao.jbox2d.model.object;
 
 import org.jbox2d.collision.shapes.CircleShape;
 import org.jbox2d.common.Vec2;
@@ -10,8 +10,6 @@ public class Engine {
     private World world;
     private float radius;
     private float speed;
-    private float frequencyHz;
-    private float dampingRatio;
     private float torque;
     private float friction;
     private float density;
@@ -21,17 +19,15 @@ public class Engine {
         this.world = builder.world;
         this.radius = builder.radius;
         this.speed = builder.speed;
-        this.frequencyHz = builder.frequencyHz;
-        this.dampingRatio = builder.dampingRatio;
         this.torque = builder.torque;
         this.density = builder.density;
         this.friction = builder.friction;
     }
 
-    public void assemble(Carframe frame) {
+    public void assemble(Chassis frame, Vec2 position) {
         final BodyDef bd = new BodyDef();
         bd.type = BodyType.DYNAMIC;
-        bd.position.set(frame.getEngineConnectionPoint());
+        bd.position.set(position);
         final Body wheel = this.world.createBody(bd);
 
         FixtureDef fd = new FixtureDef();
@@ -48,8 +44,8 @@ public class Engine {
         jd.motorSpeed = 0.0f;
         jd.maxMotorTorque = torque;
         jd.enableMotor = true;
-        jd.frequencyHz = frequencyHz;
-        jd.dampingRatio = dampingRatio;
+        jd.frequencyHz = frame.getFrequencyHz();
+        jd.dampingRatio = frame.getDampingRatio();
 
         this.wheelJoint = (WheelJoint) world.createJoint(jd);
     }
@@ -66,8 +62,6 @@ public class Engine {
         private World world;
         private float radius = 0.5f;
         private float speed = 50.f;
-        private float frequencyHz = 4.0f;
-        private float dampingRatio = 0.7f;
         private float torque = 20.0f;
         private float density = 1.2f;
         private float friction = 0.9f;
@@ -81,8 +75,23 @@ public class Engine {
             return this;
         }
 
-        public Builder setFrequencyHz(float frequencyHz) {
-            this.frequencyHz = frequencyHz;
+        public Builder setRadius(float radius) {
+            this.radius = radius;
+            return this;
+        }
+
+        public Builder setTorque(float torque) {
+            this.torque = torque;
+            return this;
+        }
+
+        public Builder setFriction(float friction) {
+            this.friction = friction;
+            return this;
+        }
+
+        public Builder setDensity(float density) {
+            this.density = density;
             return this;
         }
 

@@ -40,9 +40,9 @@ public class TestList {
 //    model.addTest(new WaveMachine());
 //    model.addTest(new Particles());
 //    model.addTest(new Truck());
+    model.addTest(new Car());
     model.addTest(new CompoundShapes());
     model.addTest(new RopeTest());
-    model.addTest(new Car());
    /*
     model.addCategory("- Featured -");
     model.addTest(new DominoTest());
@@ -78,6 +78,7 @@ public class TestList {
     model.addTest(new CollisionFiltering());
     model.addTest(new CollisionProcessing());
     model.addTest(new SensorTest());
+    */
     // joints
     model.addCategory("- Joints -");
     model.addTest(new PrismaticTest());
@@ -92,6 +93,7 @@ public class TestList {
     model.addTest(new Web());
     model.addTest(new Cantilever());
     model.addTest(new SliderCrankTest());
+    /*
     // ccd
     model.addCategory("- CCD -");
     model.addTest(new ContinuousTest());
