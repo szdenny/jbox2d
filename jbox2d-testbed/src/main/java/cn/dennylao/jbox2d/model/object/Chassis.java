@@ -35,6 +35,7 @@ public class Chassis {
         final BodyDef bd = new BodyDef();
         bd.type = BodyType.DYNAMIC;
         bd.position = this.position;
+        bd.angularDamping = 100;
         this.body = world.createBody(bd);
 
         final PolygonShape shape = new PolygonShape();

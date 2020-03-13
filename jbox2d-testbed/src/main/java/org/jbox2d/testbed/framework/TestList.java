@@ -43,6 +43,8 @@ public class TestList {
     model.addTest(new Car());
     model.addTest(new CompoundShapes());
     model.addTest(new RopeTest());
+    model.addTest(new LoadRUBE());
+    model.addTest(new LoadRUBE_bike());
    /*
     model.addCategory("- Featured -");
     model.addTest(new DominoTest());

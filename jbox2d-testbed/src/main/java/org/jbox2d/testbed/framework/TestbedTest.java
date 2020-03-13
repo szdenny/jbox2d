@@ -108,7 +108,7 @@ public abstract class TestbedTest
   private int pointCount;
   private int stepCount;
 
-  private TestbedModel model;
+  protected TestbedModel model;
   protected DestructionListener destructionListener;
   protected ParticleDestructionListener particleDestructionListener;
 
