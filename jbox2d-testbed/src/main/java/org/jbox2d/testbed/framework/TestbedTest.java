@@ -681,6 +681,7 @@ public abstract class TestbedTest
     bd.position.set(position);
     bd.bullet = true;
     bomb = m_world.createBody(bd);
+    bomb.setUserData("bomb");
     bomb.setLinearVelocity(velocity);
 
     CircleShape circle = new CircleShape();

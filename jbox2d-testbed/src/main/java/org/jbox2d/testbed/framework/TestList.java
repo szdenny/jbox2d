@@ -40,11 +40,13 @@ public class TestList {
 //    model.addTest(new WaveMachine());
 //    model.addTest(new Particles());
 //    model.addTest(new Truck());
+    model.addTest(new OneWayWall());
     model.addTest(new Car());
     model.addTest(new CompoundShapes());
     model.addTest(new RopeTest());
     model.addTest(new LoadRUBE());
     model.addTest(new LoadRUBE_bike());
+    model.addTest(new ConveyorBelt());
    /*
     model.addCategory("- Featured -");
     model.addTest(new DominoTest());
@@ -56,7 +58,6 @@ public class TestList {
     model.addCategory("- Collision Watching -");
     model.addTest(new VaryingRestitution());
     model.addTest(new VaryingFrictionTest());
-    model.addTest(new ConveyorBelt());
     model.addTest(new SphereStack());
     model.addTest(new Tumbler());
     model.addTest(new PistonTest());
@@ -77,10 +78,10 @@ public class TestList {
 
     // processing/filtering
     model.addCategory("- Processing/Filtering -");
-    model.addTest(new CollisionFiltering());
-    model.addTest(new CollisionProcessing());
     model.addTest(new SensorTest());
     */
+    model.addTest(new CollisionFiltering());
+    model.addTest(new CollisionProcessing());
     // joints
     model.addCategory("- Joints -");
     model.addTest(new PrismaticTest());
@@ -112,5 +113,6 @@ public class TestList {
     model.addTest(new DynamicTreeTest());
     model.addTest(new DistanceTest());
     */
+    model.addTest(new RayCastTest());
   }
 }
