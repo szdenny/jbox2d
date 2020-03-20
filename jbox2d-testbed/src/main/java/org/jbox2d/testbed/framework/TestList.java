@@ -32,11 +32,13 @@ public class TestList {
 
   public static void populateModel(TestbedModel model) {
     // particles
+    model.addTest(new Gravitation());
     model.addCategory("- Particles -");
-//    model.addTest(new BulletTest());
+    model.addTest(new BulletTest());
+    model.addTest(new ApplyForce());
 //    model.addTest(new DamBreak());
 //    model.addTest(new DrawingParticles());
-//    model.addTest(new LiquidTimer());
+    model.addTest(new LiquidTimer());
 //    model.addTest(new WaveMachine());
 //    model.addTest(new Particles());
 //    model.addTest(new Truck());
@@ -74,7 +76,6 @@ public class TestList {
     model.addTest(new PolyShapes());
     model.addTest(new BodyTypes());
     model.addTest(new CharacterCollision());
-    model.addTest(new ApplyForce());
 
     // processing/filtering
     model.addCategory("- Processing/Filtering -");

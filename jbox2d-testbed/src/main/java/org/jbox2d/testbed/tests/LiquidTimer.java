@@ -33,7 +33,7 @@ public class LiquidTimer extends TestbedTest {
       ParticleGroupDef pd = new ParticleGroupDef();
       pd.flags = ParticleType.b2_tensileParticle | ParticleType.b2_viscousParticle;
       pd.shape = shape;
-      m_world.createParticleGroup(pd);
+//      m_world.createParticleGroup(pd);
     }
 
     {
